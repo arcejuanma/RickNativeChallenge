@@ -1,11 +1,5 @@
 import React, { useState, useContext, useEffect, ReactElement } from "react";
-import {
-  Text,
-  StyleSheet,
-  FlatList,
-  View,
-  ActivityIndicator,
-} from "react-native";
+import { Text, FlatList, View, ActivityIndicator} from "react-native";
 import Card from "./Card";
 import { AppContext } from "../context/appContext";
 import { searchResultHandler } from "../utils/queries";

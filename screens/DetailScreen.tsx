@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, ScrollView } from "react-native";
 import Card from "../views/Card";
 import {detailScreenStyle} from "./screenStyles"
+
 const DetailScreen = ({ ...props }) => {
   let data = props.route.params;
   let name = data.name;

@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import {cardStyles} from "./viewStyles"
 
 const Card = ({ ...props }) => {
