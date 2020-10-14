@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import Card from "../views/Card";
+import {detailScreenStyle} from "./screenStyles"
 const DetailScreen = ({ ...props }) => {
   let data = props.route.params;
   let name = data.name;
@@ -11,7 +12,7 @@ const DetailScreen = ({ ...props }) => {
       {data["__typename"] === "Character" ? (
         <Image
           key={"detailViewImage"}
-          style={{ height: 400 }}
+          style={detailScreenStyle.image}
           source={{ uri: image }}
         />
       ) : (
@@ -19,12 +20,12 @@ const DetailScreen = ({ ...props }) => {
       )}
       <View
         key={"detailViewNameContainer"}
-        style={style.detailViewNameContainerStyle}
+        style={detailScreenStyle.detailViewNameContainerStyle}
       >
-        <Text style={style.textStyle}>{name}</Text>
+        <Text style={detailScreenStyle.textStyle}>{name}</Text>
       </View>
       <View
-        style={style.detailViewTextContainerStyle}
+        style={detailScreenStyle.detailViewTextContainerStyle}
         key={"detailViewTextContainer"}
       >
         {Object.keys(data).map((item) => {
@@ -33,7 +34,7 @@ const DetailScreen = ({ ...props }) => {
             typeof data[item] === "string"
           ) {
             return (
-              <Text style={style.itemTextStyle} key={`${item}`}>
+              <Text style={detailScreenStyle.itemTextStyle} key={`${item}`}>
                 {item}: {data[item] || "N/A"}
               </Text>
             );
@@ -59,23 +60,4 @@ const DetailScreen = ({ ...props }) => {
   );
 };
 
-const style = StyleSheet.create({
-  textStyle: {
-    display: "flex",
-    alignItems: "center",
-    margin: 8,
-  },
-  detailViewNameContainerStyle: {
-    display: "flex",
-    alignItems: "center",
-    margin: 8,
-  },
-  detailViewTextContainerStyle: {
-    marginTop: 5,
-  },
-  itemTextStyle: {
-    fontSize: 18,
-    marginLeft: 12,
-  },
-});
 export default DetailScreen;

@@ -9,6 +9,7 @@ import {
 import Card from "./Card";
 import { AppContext } from "../context/appContext";
 import { searchResultHandler } from "../utils/queries";
+import {resultViewStyle} from "./viewStyles"
 
 export interface Item {
   name: string;
@@ -79,7 +80,7 @@ const ResultContainer = ({ ...props }) => {
   const renderElements = ():ReactElement => {
     if (loading) {
       return (
-        <View style={[styles.container, styles.horizontal]}>
+        <View style={[resultViewStyle.container, resultViewStyle.horizontal]}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       );
@@ -87,7 +88,7 @@ const ResultContainer = ({ ...props }) => {
     if (!displayError) {
       return (
         <FlatList
-          style={styles.resultsContainer}
+          style={resultViewStyle.resultsContainer}
           data={renderData}
           renderItem={({ item }) => (
             <Card
@@ -117,22 +118,5 @@ const ResultContainer = ({ ...props }) => {
 
   return renderElements();
 };
-
-const styles = StyleSheet.create({
-  resultsContainer: {
-    display: "flex",
-    minHeight: "100%",
-    margin: 2,
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  horizontal: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    padding: 10,
-  },
-});
 
 export default ResultContainer;

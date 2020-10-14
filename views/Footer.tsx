@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import { View, Text, StyleSheet, TouchableOpacity, NativeSyntheticEvent, GestureResponderEvent } from "react-native";
+import React, {  useContext } from "react";
+import { View, Text, TouchableOpacity} from "react-native";
 import { AppContext } from "../context/appContext";
-
+import {footerStyle} from "./viewStyles";
 
 const Footer = () => {
   const {searchCategory, setSearchCategory} = useContext(AppContext);
@@ -16,29 +16,29 @@ const Footer = () => {
   }
 
   const characterViewStyle = displayedFocus("characters")
-    ? { ...styles.textContainer, ...styles.textContainerFocus }
-    : styles.textContainer;
+    ? { ...footerStyle.textContainer, ...footerStyle.textContainerFocus }
+    : footerStyle.textContainer;
   const characterTextStyle = displayedFocus("characters")
-    ? { ...styles.textStyle, ...styles.textStyleFocus }
-    : styles.textStyle;
+    ? { ...footerStyle.textStyle, ...footerStyle.textStyleFocus }
+    : footerStyle.textStyle;
   const episodesViewStyle = displayedFocus("episodes")
     ? {
-        ...styles.textContainer,
-        ...styles.separatorStyle,
-        ...styles.textContainerFocus,
+        ...footerStyle.textContainer,
+        ...footerStyle.separatorStyle,
+        ...footerStyle.textContainerFocus,
       }
-    : { ...styles.textContainer, ...styles.separatorStyle };
+    : { ...footerStyle.textContainer, ...footerStyle.separatorStyle };
   const episodesTextStyle = displayedFocus("episodes")
-    ? { ...styles.textStyle, ...styles.textStyleFocus }
-    : styles.textStyle;
+    ? { ...footerStyle.textStyle, ...footerStyle.textStyleFocus }
+    : footerStyle.textStyle;
   const locationsViewStyle = displayedFocus("locations")
-    ? { ...styles.textContainer, ...styles.textContainerFocus }
-    : styles.textContainer;
+    ? { ...footerStyle.textContainer, ...footerStyle.textContainerFocus }
+    : footerStyle.textContainer;
   const locationsTextStyle = displayedFocus("locations")
-    ? { ...styles.textStyle, ...styles.textStyleFocus }
-    : styles.textStyle;
+    ? { ...footerStyle.textStyle, ...footerStyle.textStyleFocus }
+    : footerStyle.textStyle;
   return (
-    <View style={styles.searchBarContainer}>
+    <View style={footerStyle.searchBarContainer}>
       <TouchableOpacity  onPress={()=>handleSearchCategoryChange("characters")}>
         <View style={characterViewStyle}>
           <Text style={characterTextStyle}>Characters</Text>
@@ -57,39 +57,5 @@ const Footer = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  searchBarContainer: {
-    display: "flex",
-    paddingTop: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  textContainer: {
-    minHeight: "100%",
-    minWidth: "33%",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  textContainerFocus: {
-    backgroundColor: "grey",
-  },
-  textStyle: {
-    fontSize: 15,
-    fontWeight: "bold",
-    color: "black",
-  },
-  textStyleFocus: {
-    color: "white",
-  },
-  separatorStyle: {
-    borderLeftColor: "lightgrey",
-    borderRightColor: "lightgrey",
-    borderLeftWidth: 1,
-    borderRightWidth: 1,
-  },
-});
 
 export default Footer;
